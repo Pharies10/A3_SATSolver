@@ -18,6 +18,7 @@ public class clauseNode {
 
     private boolean solved;
     private ArrayList<Integer> clause;
+    // add a variable for checked literals
 
     /*
     Constructor for the ClauseNode
