@@ -29,10 +29,13 @@ public class clauseNode {
     {
         this.solved = false;
         this.clause = new ArrayList<Integer>();
-
-        /* for items in literals 
-                add item into clause
-        */
+        
+        for (int i = 0; i < literals.size(); i++)
+        {
+            this.clause.add(literals.get(i));
+        }
+                
+        
     }
 
 
@@ -44,9 +47,40 @@ public class clauseNode {
     */
     public boolean checkVar(int var)
     {
-        /* for items in clause
-            check if var == |x|
-            if so return true*/
+        for (int i = 0; i < this.clause.size(); i++)
+        {
+            if (var == clause.get(i))
+            {
+                return true;
+            }
+        }
+        return false;
+    } 
+
+
+
+    /*
+    checkHighest takes an int and checks whether that inegter is the largest value
+    Params: Int that is the var that we want to check for
+    Return: boolean whether the symbol is high or not (true == high)
+    Example: Used if a search algorithm needs to know whether a clause cannot be solved
+    */
+    public boolean checkHighest(int var)
+    {
+        int highest = Math.abs(this.clause.get(0));
+        int varHigh = Math.abs(var);
+        for (int i = 0; i < this.clause.size(); i++)
+        { 
+            if (highest < Math.abs(clause.get(i)))
+            {
+                highest = Math.abs(clause.get(i));
+            }
+        }
+
+        if (varHigh > highest)
+        {
+            return true;
+        }
         return false;
     } 
 
@@ -59,10 +93,20 @@ public class clauseNode {
     */
     public boolean checkSolved(int var)
     {
-        /* for items in clause
-            check if var == x
-            if so set solved to true
-            return true*/
+        
+        
+        for (int i = 0; i < this.clause.size(); i++)
+        {
+            
+            if (var == clause.get(i) && this.solved != true)
+            {
+                this.solved = true;
+                return true;
+            }
+            
+                
+
+        }
 
         return false;
     }
@@ -77,6 +121,10 @@ public class clauseNode {
     public boolean getSolved()
     {
         return this.solved;
+    }
+    public void setSolved()
+    {
+        this.solved = false;
     }
 
     /*

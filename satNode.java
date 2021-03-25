@@ -17,6 +17,7 @@ public class satNode {
 
     private int val;
     private satNode parent;
+    private int charge;
 
     /*
     Constructor for the satNode
@@ -28,6 +29,7 @@ public class satNode {
     {
         this.val = val;
         this.parent = parent;
+        this.charge = 0;
 
     }
     
@@ -53,4 +55,8 @@ public class satNode {
         return this.parent;
     }
 
+    public void changeCharge()
+    {
+        this.val = this.val * -1;
+    }
 }
