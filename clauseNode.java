@@ -18,7 +18,7 @@ public class clauseNode {
 
     private boolean solved;
     private ArrayList<Integer> clause;
-    // add a variable for checked literals
+    
 
     /*
     Constructor for the ClauseNode
@@ -114,9 +114,7 @@ public class clauseNode {
 
 
     /*
-    getSolved returns whether this clause has been solved or not
-    Return: global var solved
-    Example: Used to see if a certain clause has been solved or not
+    getters and setters for the attributes
     */
     public boolean getSolved()
     {
@@ -127,11 +125,6 @@ public class clauseNode {
         this.solved = false;
     }
 
-    /*
-    getClause returns the clause that clause node is currently holding
-    Return: global var clause
-    Example: Used to get the clause from outside clauseNode
-    */
     public ArrayList<Integer> getClause()
     {
         return this.clause;

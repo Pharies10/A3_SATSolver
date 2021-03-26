@@ -17,7 +17,8 @@ public class satNode {
 
     private int val;
     private satNode parent;
-    private int charge;
+    private int repeat;
+    private boolean used;
 
     /*
     Constructor for the satNode
@@ -29,30 +30,49 @@ public class satNode {
     {
         this.val = val;
         this.parent = parent;
-        this.charge = 0;
+        this.repeat = 0;
+        this.used = false;
+       
 
     }
     
 
     /*
-    getVal return the val of node
-    Return: global var val
-    Example: Used to get the value to check for clause accetability
+    getters and setters for the attributes
     */
     public int getVal()
     {
         return this.val;
     }
 
+    public void setRepeat(int var)
+    {
+        this.repeat = var;
+    }
 
-    /*
-    getParent return the parent of node
-    Return: global var parent
-    Example: Used to get the parent of the current node
-    */
+    public int getRepeat()
+    {
+        return this.repeat;
+    }
+
     public satNode getParent()
     {
         return this.parent;
+    }
+
+    public void setParent(satNode newParent)
+    {
+        this.parent = newParent;
+    }
+
+    public boolean getUsed()
+    {
+        return this.used;
+    }
+
+    public void setUsed(boolean change)
+    {
+        this.used = change;
     }
 
     public void changeCharge()

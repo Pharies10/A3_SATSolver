@@ -140,9 +140,8 @@ public class DPLL {
     {
         globalCount++;
         int currVal = currNode.getVal();
-        //System.out.println(currVal);
-        
         int solvedCounter = 0;
+        
         // solve the sectiosn that can be solved
         for (int i = 0; i < unsolved.size(); i++)
         {
@@ -154,11 +153,6 @@ public class DPLL {
             }
             
         }
-        
-        
-
-
-        
 
         // if every clause is T	w.r.t.	model,	then return T
         if (this.solved.size() == numOfClauses)
@@ -168,16 +162,16 @@ public class DPLL {
             return true;
             
         }
+
         // if some clause is F,	then return F
         for (int i = 0; i < unsolved.size(); i++)
         {
             if (unsolved.get(i).checkHighest(currVal) == true && unsolved.get(i).getSolved() == false)
             {
-            for(i = 0; i < solvedCounter; i++)
+            for(int j = 0; j < solvedCounter; j++)
             {
                 clauseNode removed = this.solved.pop();
                 removed.setSolved();
-                //this.unsolved.add(removed);
             }
             return false;
             }
@@ -219,28 +213,14 @@ public class DPLL {
             {
                 clauseNode removed = this.solved.pop();
                 removed.setSolved();
-                //this.unsolved.add(removed);
             }
 
         return false;
-        /*
 
-        basic alg taken from rubrik
-
-
-(Sym,	value)	=	FIND-PURE-SYMBOL(	symbols,	clauses,	model	)
-if Sym,	then return DPLL(	clauses,	symbols − Sym,	model ∪ {Sym	=	value} )
-(Sym,	value)	=	FIND-UNIT-CLAUSE(	 clauses,	model	)
-if Sym,	then return DPLL(	clauses,	symbols − Sym,	model ∪ {Sym	=	value} )
-Sym =	FIRST(symbols);	rest	=	REST(symbols)
-return DPLL(	clauses,	rest,	model ∪ {Sym	= True} )	or
-DPLL( clauses,	rest,	model ∪ {Sym	=	False} )
-
-
-        */
-        
     }
 
+
+    // used to print nodes for debugging -- nots called as of now
     private void printNodes(satNode node)
     {
         int absolutVal = Math.abs(node.getVal());
@@ -287,17 +267,5 @@ DPLL( clauses,	rest,	model ∪ {Sym	=	False} )
     }
 
 
-
-    /*
-    Unit-Clause-Heuristic that looks at every clause for a negative and positive in the same sentence
-    Not sure how I will implement this yet, or if thsi will be more natural
-    Param: int val that will be searched for
-    Return: boolean whether the val is in a unit clause form
-    Example: used to stop the DFS early and solve the SAT problem
-    */
-    private boolean unitClause(int val)
-    {
-        return false;
-    }
     
 }
