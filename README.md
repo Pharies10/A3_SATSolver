@@ -6,6 +6,7 @@ Download the folder  and make sure the folder is able to be accessed by a termin
 2.	Open a console in the same directory as the files.
 3.	If installed, you need to compile several programs, follow the lines below:
   a.	javac clauseNode.java
+  
   b.	javac satNode.java
   c.	javac DPLL.java
   d.	javac forwardSearch.java
